@@ -22,7 +22,9 @@ import { Toaster } from "./components/refine-ui/notification/toaster";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import './App.css'
 import Dashboard from "@/Pages/dashboard.tsx";
-import {Home} from "lucide-react";
+import {BookOpen, Home} from "lucide-react";
+import SubjectList from "@/Pages/Subjects/list.tsx";
+import SubjectsCreate from "@/Pages/Subjects/create.tsx";
 
 
 
@@ -35,7 +37,6 @@ function App() {
     
     return (
         <BrowserRouter>
-        {/*<GitHubBanner />*/}
         <RefineKbarProvider>
             <ThemeProvider>
             <DevtoolsProvider>
@@ -53,6 +54,12 @@ routerProvider={routerProvider}
                                 name:"dashboard",
                                 list:'/',
                                 meta:{label:'Home',icon:<Home/>}
+                            },
+                            {
+                                name:"subjects",
+                                list:'/subjects',
+                                create:'/subjects/create',
+                                meta:{label:'Subjects',icon:<BookOpen/>}
                             }
                         ]}
                 >
@@ -65,6 +72,8 @@ routerProvider={routerProvider}
                                 </Layout>
                             }>
                             <Route path="/" element={<Dashboard />} />
+                                <Route path="subjects" index element={<SubjectList />} />
+                                <Route path="create"  element={<SubjectsCreate />} />
                             </Route>
                         </Routes>
                     <Toaster />
