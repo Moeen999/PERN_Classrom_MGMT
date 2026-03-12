@@ -21,6 +21,8 @@ import { useNotificationProvider } from "./components/refine-ui/notification/use
 import { Toaster } from "./components/refine-ui/notification/toaster";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import './App.css'
+import Dashboard from "@/Pages/dashboard.tsx";
+import {Home} from "lucide-react";
 
 
 
@@ -33,7 +35,7 @@ function App() {
     
     return (
         <BrowserRouter>
-        <GitHubBanner />
+        {/*<GitHubBanner />*/}
         <RefineKbarProvider>
             <ThemeProvider>
             <DevtoolsProvider>
@@ -46,11 +48,24 @@ routerProvider={routerProvider}
                             projectId: "GQujgf-Phdd04-QjYNEx",
                         
                     }}
+                        resources={[
+                            {
+                                name:"dashboard",
+                                list:'/',
+                                meta:{label:'Home',icon:<Home/>}
+                            }
+                        ]}
                 >
 
 
                         <Routes>
-                            <Route index element={<WelcomePage />} />
+                            <Route element={
+                                <Layout>
+                                    <Outlet/>
+                                </Layout>
+                            }>
+                            <Route path="/" element={<Dashboard />} />
+                            </Route>
                         </Routes>
                     <Toaster />
                     <RefineKbar />
