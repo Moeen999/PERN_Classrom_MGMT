@@ -80,7 +80,7 @@ const UploadWidget = ({ value = null, onChange, disabled = false }: UploadWidget
                         <UploadCloud className='icon'/>
                         <div>
                             <p>Click to upload photos</p>
-                            <p>PNG,JPG up to 5MB</p>
+                            <p>PNG, JPG, JPEG, WEBP up to 5MB</p>
                         </div>
                     </div>
                 </div>
