@@ -20,7 +20,7 @@ const UploadWidget = ({ value = null, onChange, disabled = false }: UploadWidget
     },[value])
 
     useEffect(()=>{
-        onChangeRef.current = value;
+        onChangeRef.current = onChange;
     },[onChange])
 
     useEffect(()=>{

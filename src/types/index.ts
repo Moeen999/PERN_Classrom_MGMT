@@ -25,16 +25,17 @@ export type GetOneResponse<T = unknown> = {
     data?: T;
 };
 
+interface CloudinaryUploadSuccessInfo {
+        secure_url: string;
+        public_id: string;
+        delete_token?: string;
+        resource_type: string;
+        original_filename: string;
+    }
 declare global {
     interface CloudinaryUploadWidgetResults {
         event: string;
-        info: {
-            secure_url: string;
-            public_id: string;
-            delete_token?: string;
-            resource_type: string;
-            original_filename: string;
-        };
+        info?: string | CloudinaryUploadSuccessInfo | Record<string, unknown>;
     }
 
     interface CloudinaryWidget {
@@ -47,7 +48,7 @@ declare global {
                 options: Record<string, unknown>,
                 callback: (
                     error: unknown,
-                    result: CloudinaryUploadWidgetResults
+                    result?: CloudinaryUploadWidgetResults
                 ) => void
             ) => CloudinaryWidget;
         };
