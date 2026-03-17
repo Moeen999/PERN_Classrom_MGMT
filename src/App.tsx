@@ -22,9 +22,11 @@ import { Toaster } from "./components/refine-ui/notification/toaster";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
 import './App.css'
 import Dashboard from "@/Pages/dashboard.tsx";
-import {BookOpen, Home} from "lucide-react";
+import {BookOpen, GraduationCap, Home} from "lucide-react";
 import SubjectList from "@/Pages/Subjects/list.tsx";
 import SubjectsCreate from "@/Pages/Subjects/create.tsx";
+import ClassesList from "@/Pages/classes/list.tsx";
+import ClassesCreate from "@/Pages/classes/create.tsx";
 
 
 
@@ -60,6 +62,12 @@ routerProvider={routerProvider}
                                 list:'/subjects',
                                 create:'/subjects/create',
                                 meta:{label:'Subjects',icon:<BookOpen/>}
+                            },
+                            {
+                                name:"classes",
+                                list:'/classes',
+                                create:'/classes/create',
+                                meta:{label:'Classes',icon:<GraduationCap/>}
                             }
                         ]}
                 >
@@ -72,9 +80,16 @@ routerProvider={routerProvider}
                                 </Layout>
                             }>
                             <Route path="/" element={<Dashboard />} />
-                                <Route path="subjects" index element={<SubjectList />} />
-                                <Route path="create"  element={<SubjectsCreate />} />
+                                <Route path="/subjects">
+                                    <Route index element={<SubjectList />} />
+                                    <Route path="create"  element={<SubjectsCreate />} />
+                                </Route>
+                                <Route path="/classes">
+                                    <Route index element={<ClassesList />} />
+                                    <Route path="create"  element={<ClassesCreate />} />
+                                </Route>
                             </Route>
+
                         </Routes>
                     <Toaster />
                     <RefineKbar />
